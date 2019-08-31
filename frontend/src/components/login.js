@@ -1,5 +1,8 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
+import {connect} from 'react-redux'
+import {login} from '../actions/auth'
+import {Redirect} from 'react-router-dom'
 
 
 class Login extends React.Component {
@@ -19,13 +22,15 @@ class Login extends React.Component {
         e.preventDefault();
         const {email, password} = this.state;
         if(email && password) {
-            console.log("THIS IS EMAIL : ", email)
-            console.log("THIS IS PASSWORD : ", password)
+            this.props.login(email, password)
         }
     }
 
 
     render(){
+        if (this.props.isAuthenticated) {
+            return <Redirect to="/" />;
+        }
         return(
             <div className='login_container'>
                 <p>ВОЙТИ</p>
@@ -48,5 +53,8 @@ class Login extends React.Component {
     }
 }
 
+const mapStateToProps = state => ({
+  isAuthenticated: state.auth.isAuthenticated
+});
 
-export default Login;
+export default connect(mapStateToProps, {login})(Login);

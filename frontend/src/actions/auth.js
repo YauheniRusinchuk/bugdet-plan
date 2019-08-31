@@ -5,6 +5,9 @@ import {
   AUTH_ERROR,
   LOGIN_SUCCESS,
   LOGIN_FAIL,
+  LOGOUT_SUCCESS,
+  REGISTER_FAIL,
+  REGISTER_SUCCESS,
 } from "./types";
 
 
@@ -14,7 +17,7 @@ export const loadUser = () => (dispatch, getState) => {
   dispatch({ type: USER_LOADING });
 
   axios
-    .get("/api/auth/user", tokenConfig(getState))
+    .get("http://127.0.0.1:8000/api/v1/auth/user", tokenConfig(getState))
     .then(res => {
       dispatch({
         type: USER_LOADED,
@@ -45,7 +48,7 @@ export const login = (username, password) => dispatch => {
   const body = JSON.stringify({ username, password });
 
   axios
-    .post("/api/auth/login", body, config)
+    .post("http://127.0.0.1:8000/api/v1/auth/login", body, config)
     .then(res => {
       dispatch({
         type: LOGIN_SUCCESS,
@@ -64,7 +67,7 @@ export const login = (username, password) => dispatch => {
 
 
 // REGISTER USER
-export const register = ({ username, password, email }) => dispatch => {
+export const register = ({ email, password }) => dispatch => {
   // Headers
   const config = {
     headers: {
@@ -73,10 +76,10 @@ export const register = ({ username, password, email }) => dispatch => {
   };
 
   // Request Body
-  const body = JSON.stringify({ username, email, password });
+  const body = JSON.stringify({ email, password });
 
   axios
-    .post("/api/auth/register", body, config)
+    .post("http://127.0.0.1:8000/api/v1/auth/register", body, config)
     .then(res => {
       dispatch({
         type: REGISTER_SUCCESS,
@@ -88,6 +91,7 @@ export const register = ({ username, password, email }) => dispatch => {
       dispatch({
         type: REGISTER_FAIL
       });
+      console.log(err.response)
     });
 };
 
@@ -96,9 +100,9 @@ export const register = ({ username, password, email }) => dispatch => {
 // LOGOUT USER
 export const logout = () => (dispatch, getState) => {
   axios
-    .post("/api/auth/logout/", null, tokenConfig(getState))
+    .post("http://127.0.0.1:8000/api/v1/auth/logout", null, tokenConfig(getState))
     .then(res => {
-      dispatch({ type: 'CLEAR_LEADS' });
+      //dispatch({ type: 'CLEAR_LEADS' });
       dispatch({
         type: LOGOUT_SUCCESS
       });

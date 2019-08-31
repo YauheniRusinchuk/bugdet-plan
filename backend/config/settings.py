@@ -61,6 +61,7 @@ CORS_ORIGIN_WHITELIST = (
 AUTH_USER_MODEL = 'account.User'
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
