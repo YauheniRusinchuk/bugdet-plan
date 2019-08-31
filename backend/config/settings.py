@@ -37,7 +37,28 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'src.models.account',
+    'rest_framework',
+    'corsheaders',
+    'knox',
 ]
+
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'knox.auth.TokenAuthentication',
+    ),
+}
+
+
+CORS_ORIGIN_WHITELIST = (
+    'http://localhost:3000',
+)
+
+
+
+
+AUTH_USER_MODEL = 'account.User'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
