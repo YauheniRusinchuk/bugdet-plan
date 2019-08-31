@@ -3,6 +3,7 @@ import {Switch, Route} from 'react-router-dom'
 import Home from './home'
 import Login from './login'
 import Register from './register'
+import Create from './create'
 import PrivateRoute from './privateRoute'
 
 class Root extends React.Component {
@@ -13,6 +14,7 @@ class Root extends React.Component {
                     <PrivateRoute exact path='/' component={Home} />
                     <Route path='/login' component={Login} />
                     <Route path='/register' component={Register} />
+                    <Route path='/create' component={Create} />
                 </Switch>
             </div>
         );

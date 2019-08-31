@@ -83,3 +83,85 @@
     color: blue;
     font-weight: bold;
 }
+
+.home_container {
+    width: 100%;
+}
+
+.home_container .lists_project {
+    width: 60%;
+    margin: 100px auto;
+    text-align: center;
+}
+
+.logout_btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: white;
+    color: grey;
+    font-size: 10px;
+    border: 2px solid grey;
+    border-radius: 3px;
+    padding: 3px 20px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+
+.create_btn {
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    background-color: white;
+    color: grey;
+    font-size: 10px;
+    border: 2px solid grey;
+    border-radius: 3px;
+    padding: 3px 20px;
+    cursor: pointer;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+
+.create_container {
+    width: 60%;
+    margin: 50px auto;
+    text-align: center;
+}
+
+.create_container form {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 50px;
+    text-align: center;
+}
+
+.create_container form label {
+    font-size: 10px;
+}
+
+
+.create_container form input {
+    width: 400px;
+    margin: 10px;
+    padding: 10px;
+    border: 2px solid grey;
+    border-radius: 3px;
+    outline: none;
+}
+
+.create_container form button {
+    font-size: 10px;
+    font-weight: bold;
+    background-color: grey;
+    color: white;
+    border: 1px solid grey;
+    border-radius: 3px;
+    padding: 7px 30px;
+    cursor: pointer;
+    outline: none;
+
+}
