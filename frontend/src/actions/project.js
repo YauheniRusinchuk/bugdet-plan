@@ -1,6 +1,11 @@
 import axios from "axios";
 import { tokenConfig } from "./auth";
-import {GET_PROJECTS, GET_DETAIL, ADD_PROJECT} from './types';
+import {
+    GET_PROJECTS,
+    GET_DETAIL,
+    ADD_PROJECT,
+    DELETE_PROJECT,
+} from './types';
 
 
 // GET PROJECT
@@ -18,6 +23,21 @@ export const getProjects = () => (dispatch, getState) => {
       //dispatch(returnErrors(err.response.data, err.response.status))
     );
 };
+
+// DELETE PROJECT
+export const deleteProject = id => (dispatch, getState) => {
+  axios
+    .delete(`http://127.0.0.1:8000/api/v1/projects/all/${id}`, tokenConfig(getState))
+    .then(res => {
+      dispatch({
+        type: DELETE_PROJECT,
+        payload: id
+      });
+    })
+    .catch(err => console.log(err));
+};
+
+
 
 
 // GET PROJECT DETAIL

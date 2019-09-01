@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom'
 import {connect} from 'react-redux'
 import {getProjects} from '../actions/project'
 import {logout} from '../actions/auth'
-
+import {deleteProject} from '../actions/project'
 
 class Home extends React.Component {
 
@@ -18,6 +18,7 @@ class Home extends React.Component {
             projects.map(project => {
                 return(
                     <div className='project_item' key={project.id}>
+                        <button onClick={this.props.deleteProject.bind(this, project.id)} className='btn_delete_project'>удалить</button>
                         <Link to={{pathname: '/detail', state: {id: project.id}}}>{project.name}</Link>
                         <span>{project.budget}руб</span>
                     </div>
@@ -43,4 +44,4 @@ const mapStateToProps = state => ({
 })
 
 
-export default connect(mapStateToProps,{getProjects, logout})(Home);
+export default connect(mapStateToProps,{getProjects, logout, deleteProject})(Home);

@@ -8,4 +8,5 @@ export const REGISTER_SUCCESS = "REGISTER_SUCCESS";
 export const REGISTER_FAIL = "REGISTER_FAIL";
 export const GET_PROJECTS = "GET_PROJECTS";
 export const GET_DETAIL = 'GET_DETAIL';
+export const DELETE_PROJECT = "DELETE_PROJECT";
 export const ADD_PROJECT = "ADD_PROJECT";
