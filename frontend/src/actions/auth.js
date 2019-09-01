@@ -36,7 +36,7 @@ export const loadUser = () => (dispatch, getState) => {
 
 
 // LOGIN USER
-export const login = (username, password) => dispatch => {
+export const login = (email, password) => dispatch => {
   // Headers
   const config = {
     headers: {
@@ -45,7 +45,7 @@ export const login = (username, password) => dispatch => {
   };
 
   // Request Body
-  const body = JSON.stringify({ username, password });
+  const body = JSON.stringify({ email, password });
 
   axios
     .post("http://127.0.0.1:8000/api/v1/auth/login", body, config)
@@ -57,6 +57,7 @@ export const login = (username, password) => dispatch => {
     })
     .catch(err => {
       //dispatch(returnErrors(err.response.data, err.response.status));
+      console.log(err.response)
       dispatch({
         type: LOGIN_FAIL
       });

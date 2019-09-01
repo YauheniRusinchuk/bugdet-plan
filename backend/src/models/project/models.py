@@ -6,5 +6,10 @@ User = get_user_model()
 
 class Project(models.Model):
 
-    user = models.ForeignKey(User, related_name='projects', on_delete=models.CASCADE)
-    name = models.CharField(max_length=255, blank=False)
+    user    = models.ForeignKey(User, related_name='projects', on_delete=models.CASCADE)
+    name    = models.CharField(max_length=255, blank=False)
+    budget  = models.IntegerField()
+
+
+    def __str__(self):
+        return f"{self.name}"
