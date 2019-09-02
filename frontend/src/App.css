@@ -233,13 +233,14 @@
 
 .item_expense {
     width: 50%;
-    margin: 30px auto;
+    margin: 50px auto;
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 10px;
     border-radius: 3px;
     background-color: #fafafa;
+    position: relative;
 }
 
 .item_expense p {

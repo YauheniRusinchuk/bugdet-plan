@@ -1,8 +1,9 @@
-import { GET_DETAIL } from "../actions/types.js";
+import { GET_DETAIL, DELETE_EXPENSE } from "../actions/types.js";
 
 
 const initialState = {
-    detail: {}
+    detail: {},
+    expenses: []
 }
 
 
@@ -11,8 +12,14 @@ export default function (state = initialState, action) {
     case GET_DETAIL:
       return {
         ...state,
-        detail: action.payload
+        detail: action.payload,
+        expenses: action.payload.expenses,
       };
+     case DELETE_EXPENSE:
+       return {
+         ...state,
+         expenses: state.expenses.filter(expense => expense.id !== action.payload)
+       };
     default:
       return state;
   }

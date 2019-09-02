@@ -11,3 +11,4 @@ export const GET_DETAIL = 'GET_DETAIL';
 export const DELETE_PROJECT = "DELETE_PROJECT";
 export const ADD_PROJECT = "ADD_PROJECT";
 export const ADD_EXPENSE = "ADD_EXPENSE"
+export const DELETE_EXPENSE = "DELETE_EXPENSE";

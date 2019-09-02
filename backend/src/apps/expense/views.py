@@ -17,7 +17,8 @@ class ExpenseViewSet(viewsets.ModelViewSet):
     ]
 
     def get_queryset(self):
-        return self.request.user.expenses.all()
+        return self.request.user.expens_all.all()
+
 
 
     def create(self, request):
@@ -25,6 +26,6 @@ class ExpenseViewSet(viewsets.ModelViewSet):
         title       = request.data.get('title')
         amount      = request.data.get('amount')
         project = Project.objects.get(id=project_id)
-        expense = Expense(project=project, title=title, amount=amount)
+        expense = Expense(owner=self.request.user ,project=project, title=title, amount=amount)
         expense.save()
         return Response(status=status.HTTP_201_CREATED)

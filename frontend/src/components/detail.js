@@ -1,7 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import {getProjectDetail} from '../actions/project'
-import {addExpense} from '../actions/project'
+import {addExpense, deleteExpense} from '../actions/project'
 
 
 class Detail extends React.Component {
@@ -16,7 +16,6 @@ class Detail extends React.Component {
     componentDidMount() {
         const {id} = this.props.location.state
         this.props.getProjectDetail(id)
-        console.log('REQUEST')
     }
 
 
@@ -41,8 +40,9 @@ class Detail extends React.Component {
         }
     }
 
-
-
+    handleDelete = (id) => {
+        this.props.deleteExpense(id);
+    }
 
 
     render(){
@@ -61,6 +61,7 @@ class Detail extends React.Component {
                     <div key={expense.id} className='item_expense'>
                         <p>{expense.title}</p>
                         <span>-{expense.amount}руб</span>
+                        <button onClick={this.handleDelete.bind(this, expense.id)} className='btn_delete_project'>удалить</button>
                     </div>
                 )
             })
@@ -93,9 +94,9 @@ class Detail extends React.Component {
 
 const mapStateToProps = state => ({
     detail: state.detail,
-    expenses: state.detail.detail.expenses,
+    expenses: state.detail.expenses,
 })
 
 
 
-export default connect(mapStateToProps, {getProjectDetail, addExpense})(Detail);
+export default connect(mapStateToProps, {getProjectDetail, addExpense, deleteExpense})(Detail);

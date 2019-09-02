@@ -13,7 +13,7 @@ class Home extends React.Component {
 
     render(){
         const {projects} = this.props.projects;
-
+        console.log(projects)
         const body = projects ? (
             projects.map(project => {
                 return(

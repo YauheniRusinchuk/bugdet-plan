@@ -6,17 +6,34 @@ import {
     ADD_PROJECT,
     DELETE_PROJECT,
     ADD_EXPENSE,
+    DELETE_EXPENSE,
 } from './types';
 
 
 export const addExpense = (expense) => (dispatch, getState) => {
-    console.log(expense)
     axios
       .post("http://127.0.0.1:8000/api/v1/expense/create/", expense, tokenConfig(getState))
       .then(res => {
         dispatch({
           type: ADD_EXPENSE,
           payload: res.data
+        });
+      })
+      .catch(err =>
+          console.log(err.response)
+        //dispatch(returnErrors(err.response.data, err.response.status))
+      );
+}
+
+
+// DELETE EXPENSE
+export const deleteExpense = (id_expense) => (dispatch, getState) => {
+    axios
+      .delete(`http://127.0.0.1:8000/api/v1/expense/create/${id_expense}`, tokenConfig(getState))
+      .then(res => {
+        dispatch({
+          type: DELETE_EXPENSE,
+          payload: id_expense
         });
       })
       .catch(err =>
