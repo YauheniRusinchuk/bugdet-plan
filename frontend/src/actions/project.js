@@ -5,7 +5,26 @@ import {
     GET_DETAIL,
     ADD_PROJECT,
     DELETE_PROJECT,
+    ADD_EXPENSE,
 } from './types';
+
+
+export const addExpense = (expense) => (dispatch, getState) => {
+    console.log(expense)
+    axios
+      .post("http://127.0.0.1:8000/api/v1/expense/create/", expense, tokenConfig(getState))
+      .then(res => {
+        dispatch({
+          type: ADD_EXPENSE,
+          payload: res.data
+        });
+      })
+      .catch(err =>
+          console.log(err.response)
+        //dispatch(returnErrors(err.response.data, err.response.status))
+      );
+}
+
 
 
 // GET PROJECT

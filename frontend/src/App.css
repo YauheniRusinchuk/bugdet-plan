@@ -230,3 +230,59 @@
     font-weight: bold;
     cursor: pointer;
 }
+
+.item_expense {
+    width: 50%;
+    margin: 30px auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    border-radius: 3px;
+    background-color: #fafafa;
+}
+
+.item_expense p {
+    font-size: 10px;
+    font-weight: bold;
+}
+
+.item_expense span {
+    color: red;
+    font-size: 10px;
+    font-weight: bold;
+}
+
+
+.create_new_expense {
+    width: 50px;
+    margin: 50px auto;
+}
+
+.create_new_expense form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.create_new_expense form input {
+    width: 400px;
+    padding: 10px;
+    font-size: 12px;
+    border: 1px solid grey;
+    border-radius: 3px;
+    margin: 10px;
+    outline: none;
+}
+
+.create_new_expense form button {
+    font-size: 10px;
+    font-weight: bold;
+    background-color: grey;
+    color: white;
+    border: 1px solid grey;
+    border-radius: 3px;
+    padding: 7px 30px;
+    cursor: pointer;
+    outline: none;
+}
